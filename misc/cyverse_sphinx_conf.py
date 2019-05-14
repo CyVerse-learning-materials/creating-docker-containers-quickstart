@@ -9,8 +9,8 @@ extensions = [
     'sphinx.ext.autodoc',
 ]
 
-project = 'YOUR PROJECT NAME HERE as topic_quick_start'
-copyright = '2017, CyVerse'
+project = 'Creating and Running Docker Containers quick_start'
+copyright = '2019, CyVerse'
 author = 'CyVerse'
 version = '1.0'
 release = '1.0'

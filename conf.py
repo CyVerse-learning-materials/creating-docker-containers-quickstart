@@ -9,9 +9,9 @@ sys.path.insert(0, os.path.dirname(__file__))
 
 from misc.cyverse_sphinx_conf import *  # noqa
 
-project = 'YOUR QUICKSTART NAME HERE as topic_quick_start'
-copyright = '2018, CyVerse'
-author = 'Your Name'
+project = 'Creating and Running Docker Containers quick start'
+copyright = '2019, CyVerse'
+author = 'Jason Williams'
 version = '1.0'
 release = '1.0'
 

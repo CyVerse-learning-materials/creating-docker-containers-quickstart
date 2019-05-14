@@ -5,55 +5,38 @@
 |Home_Icon|_
 `Learning Center Home <http://learning.cyverse.org/>`_
 
-**QUICKSTART NAME**
-===================
-
-..
-    #### Comment: Use short, imperative titles e.g. Upload and share data, uploading and
-    sharing data ####
+**Creating and Running Docker Containers**
+============================================
 
 Goal
 ----
 
-..
-    Avoid covering upstream and downstream steps that are not explicitly and
-    necessarily part of the tutorial - write or link to separate quick
-    starts/tutorials for those parts
-
-..
-    #### Comment: A few sentences (50 words or less) describing the ultimate goal of the steps
-    in this tutorial ####
+This is a short introduction to building a Docker container. Containers are
+a starting point for applications within the CyVerse |Discovery Environment|,
+including VICE applications (See: |VICE documentation|), or for applications
+you may wish to deploy on |Atmosphere|. We will cover 1) setting up your
+computer for Docker, 2) pulling and running a container from Docker Hub, and 3)
+creating a Dockerfile.
 
 ----
 
 .. toctree::
 	:maxdepth: 2
 
-	Quickstart home <self>
-	Step Two <step2.rst>
-	Delete this example guide page <example_directives_delete.rst>
-..
-	#### Comment:This tutorial can have multiple pages. The table of contents assumes
-	you have an additional page called 'Step Two' with content located in 'step2.rst'
-	Edit these titles and filenames as needed ####
+	Setting up Docker on your computer <self>
+	Pulling and running a container from Docker Hub <step2.rst>
+	Building a container from a Dockerfile <step3.rst>
 
-..
-    #### Comment: If you are using the TOC remove the 'summary', 'Additional information,
-    help' and 'Fix or improve this tutorial' from all pages except the last page of the
-    quickstart ####
 
 -----
 
 Prerequisites
 -------------
 
-
-
 Downloads, access, and services
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 *In order to complete this tutorial you will need access to the following services/software*
-
 
  .. list-table::
    :header-rows: 1
@@ -61,23 +44,26 @@ Downloads, access, and services
    * - Prerequisite
      - Preparation/Notes
      - Link/Download
+   * - Docker
+     - You will need Docker CE installed on your machine complete this exercise
+     - |Docker Setup|
+   * - Docker Hub account
+     - You will need a Docker Hub account to complete this exercise
+     - |Docker Hub|
    * - CyVerse account
-     - You will need a CyVerse account to complete this exercise
+     - An account is not required unless you wish to complete exercises using a CyVerse virtual machine (Atmosphere)
      - |CyVerse User Portal|
    * - Atmosphere access
-     - You must have access to Atmosphere
-     - |CyVerse User Portal|
-   * - Cyberduck
-     - Standalone software for upload/download to Data Store
-     - |Download Cyberduck|
+     - An account is not required unless you wish to complete exercises using a CyVerse virtual machine (Atmosphere)
+     - |Atmosphere Manual|
+   * - An active Atmosphere instance running Ubuntu
+     - An account is not required unless you wish to complete exercises using a CyVerse virtual machine (Atmosphere)
+     - |Ubuntu 18_04 GUI XFCE Base v2.0|
 
 Platform(s)
 ~~~~~~~~~~~
 
 *We will use the following CyVerse platform(s):*
-
- ..
-   #### comment: delete any row not needed in this table ####
 
 .. list-table::
     :header-rows: 1
@@ -87,83 +73,72 @@ Platform(s)
       - Link
       - Platform Documentation
       - Quick Start
-    * - Data Store
-      - GUI/Command line
-      - |Data Store|
-      - |Data Store Manual|
-      - |Data Store Guide|
-    * - Discovery Environment
-      - Web/Point-and-click
-      - |Discovery Environment|
-      - |DE Manual|
-      - |Discovery Environment Guide|
     * - Atmosphere
       - Command line (ssh) and/or Desktop (VNC)
       - |Atmosphere|
       - |Atmosphere Manual|
       - |Atmosphere Guide|
-    * - BisQue
-      - Web/Point-and-click and/or Command-line (API)
-      - |BisQue|
-      - |BisQue Manual|
-      - (See Manual)
-    * - DNA Subway
-      - Web/Point-and-click
-      - |DNA Subway|
-      - (See Guide)
-      - |DNA Subway Guide|
-    * - SciApps
-      - Command-line (API)
-      - |SciApps|
-      - (See Guide)
-      - |SciApps Guide|
-    * - Agave API
-      - Command-line (API)
-      - |Agave API|
-      - |Agave Live Docs|
-      - (See Live Docs)
-
-Input and example data
-~~~~~~~~~~~~~~~~~~~~~~
-
-*In order to complete this quickstart you will need to have the following inputs prepared*
-
-.. list-table::
-    :header-rows: 1
-
-    * - Input File(s)
-      - Format
-      - Preparation/Notes
-      - Example Data
-    * -
-      -
-      -
-      -
 
 ----
 
+*Setting up Docker on your computer*
+-------------------------------------
+To get started, we need to install the "Docker daemon" - this is the software
+which will allow us to run Docker containers. It is usually easily installed,
+but since instructions may change we suggest you visit the |Docker Setup| website.
+For more background about what Docker is, please see the |Docker get started|
+website.
 
-*Get started*
---------------
+**If you are going to run Docker on your Mac/PC/Linux computer**
 
-1. Step one
-2. Step two
+  1. Follow the instructions to install Docker: |Docker Setup|
 
-----
+**If you are going to run Docker on your on a CyVerse Atmosphere machine**
 
+  1. Launch and connect via ssh to the |Ubuntu 18_04 GUI XFCE Base v2.0| image (
+     see |Atmosphere Manual| for help launching and connecting)
 
+  2. Next, we need to install some dependancies to get Docker to run on our Ubuntu
+     machine
 
-*Summary*
-~~~~~~~~~~~
+    .. code:: Bash
 
+      apt-get install -y  \
+      apt-transport-https \
+      ca-certificates \
+      software-properties-common
 
-**Next Steps:**
+  3. Next we will add a gpg key (so we can connect securely to the Docker repository)
 
-Some common next steps include:
+    .. code:: Bash
 
-1. Step
+      curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-2. Step
+  4. Now we will add the Docker repository to the list of download sources
+
+    .. code:: Bash
+
+      add-apt-repository \
+      "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+      $(lsb_release -cs) \
+      stable"
+
+  5. Next, we will update the repository lists
+
+    .. code:: Bash
+
+      sudo apt-get update
+
+  6. Finally, we will install Docker
+
+    .. code:: Bash
+
+      sudo apt-get install -y docker-ce
+
+    .. tip::
+
+       If you are using Atmosphere, your `sudo` password is the same as your
+       login credentials.
 
 ----
 
@@ -222,9 +197,24 @@ Post your question to the user forum:
 
 .. |Github Repo Link|  raw:: html
 
-   <a href="FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX_FIX" target="blank">Github Repo Link</a>
+   <a href="https://github.com/CyVerse-learning-materials/creating-docker-containers-quickstart" target="blank">Github Repo Link</a>
 
+.. |VICE documentation| raw:: html
 
-.. |Download Cyberduck| raw:: html
+   <a href="https://cyverse-visual-interactive-computing-environment.readthedocs-hosted.com/en/latest/index.html" target="blank">VICE documentation</a>
 
-   <a href="https://cyberduck.io/" target="blank">Download Cyberduck</a>
+.. |Docker Setup| raw:: html
+
+   <a href="https://docs.docker.com/install/" target="blank">Docker Setup</a>
+
+.. |Docker Hub| raw:: html
+
+   <a href="https://hub.docker.com/" target="blank">Docker Hub</a>
+
+.. |Ubuntu 18_04 GUI XFCE Base v2.0| raw:: html
+
+   <a href="https://atmo.cyverse.org/application/images/1556" target="blank">Ubuntu 18_04 GUI XFCE Base v2.0</a>
+
+.. |Docker get started| raw:: html
+
+   <a href="https://docs.docker.com/get-started/" target="blank">Docker get started</a>

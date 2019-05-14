@@ -1,6 +1,6 @@
 #Contributors and Maintainers
 
-## CyVerse Maintainer: 
+## CyVerse Maintainer:
 
 **Name:**
 **Email:**
@@ -9,5 +9,4 @@
 
 |Name|Contact Info|Institution|Notes|
 |----|------------|-----------|-----|
-|||||
-
+|Jason Williams|Williams@cshl.edu|CSHL||
