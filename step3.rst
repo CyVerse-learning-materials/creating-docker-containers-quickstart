@@ -161,10 +161,10 @@ Dockerfile
         # We will define fastqc as the application to run when this container starts
         ENTRYPOINT ["fastqc"]
 
- 8. Next, we will build our container with the following command
+  8. Next, we will build our container with the following command
 
     .. code:: Bash
-    
+
       # -t specifies a name and version tag for the image
       # . specifies the "build context", the path to any needed files for the build
       # should exist. In our case the Dockerfile is the only file needed
