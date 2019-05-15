@@ -163,7 +163,6 @@ Dockerfile
 
   8. Next, we will build our container with the following command
 
-
     .. code:: Bash
       # -t specifies a name and version tag for the image
       # . specifies the "build context", the path to any needed files for the build
