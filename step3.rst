@@ -161,7 +161,7 @@ Dockerfile
         # We will define fastqc as the application to run when this container starts
         ENTRYPOINT ["fastqc"]
 
-  8. Next, we will build our container with the following command
+ 8. Next, we will build our container with the following command
 
 
     .. code:: Bash
