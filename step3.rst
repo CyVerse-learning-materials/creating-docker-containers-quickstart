@@ -12,8 +12,8 @@
 One of the most important aspects of Docker is that everything in the container
 can be neatly documented in a |Dockerfile| - a plain text document specifying
 the steps used to build the container. Let's build a container that will run
-|fastqc| a popular bioinformatics tool to check the quality of DNA sequencing
-reads.
+|fastqc| a popular bioinformatics tool for checking the quality of DNA
+sequencing reads.
 
 
 First, we will try to install fastqc on the ubuntu image just as if we were
@@ -165,6 +165,9 @@ Dockerfile
 
 
     .. code:: Bash
+      # -t specifies a name and version tag for the image
+      # . specifies the "build context", the path to any needed files for the build
+      # should exist. In our case the Dockerfile is the only file needed
 
       docker build -t fastqc:1.0 .
 
@@ -189,9 +192,9 @@ Dockerfile
       cd ~/data
       wget https://de.cyverse.org/dl/d/48CAB430-473B-4853-AABE-1845A83204C7/small.fastq
 
-      # we use the -v flag to mount our ~/data directory to /data (which will be
-      # created when this command is run). We then specify the file for the
-      # fastqc program to run on.
+      # we use the -v flag to mount our ~/data directory (outside container)
+      # to /data (inside the container; it will be created when this command is run)
+      # We then specify the file for the fastqc program to run on.
 
       docker run -v ~/data:/data fastqc:1.0 /data/small.fastq
 
@@ -205,15 +208,14 @@ A Dockerfile allows you to transparently document all the dependancies and steps
 needed to describe a software tool. You can then run this tool as a Docker
 container for full reproducibility.
 
-**Next Steps:**
-
 ----------
+
+**Next Steps:**
 
  - Learn about |pushing your Docker image to Dockerhub|
  - Create a GitHub repository to manage your dockerfiles
  - Learn more about |Best practices for writing Dockerfiles|
  - Learn |more about Docker|
-
 
 ----------
 

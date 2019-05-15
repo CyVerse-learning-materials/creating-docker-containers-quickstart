@@ -10,7 +10,7 @@
 -------------------------------------------------
 
 After installing Docker, you can verify your installation by running a container
-from |Docker Hub|. Docker Hub is service that allow you to store and share
+from |Docker Hub|. Docker Hub is service that allows you to store and share
 containers. When building your own container, you will usually start from a
 a pre-existing container. For example, the |Ubuntu Docker| page on Docker Hub hosts
 official Ubuntu operating system containers. These are minimal installations
@@ -19,10 +19,9 @@ operating system.
 
   .. tip::
 
-      Docker Hub hosts |Official Images|, which can be more secure than unverified
-      images available on Docker Hub (which can be pushed there by anyone
-      with a Docker Hub account). Official images are also more likely to be
-      configured correctly
+      Docker Hub hosts |Official Images|, which are generally more secure than
+      unverified images (anyone with a Docker Hub account can host and image).
+      Official images are also more likely to be configured correctly.
 
 We will test your installation by pulling and running the "Hello World" image:
 
@@ -114,7 +113,8 @@ We will test your installation by pulling and running the "Hello World" image:
 
   .. Tip::
 
-     A full list of docker commands and their explanation can be found here: |Docker child commands|
+     A full list of Docker commands and their explanation can be found here:
+     |Docker child commands|. 
 
 ----
 

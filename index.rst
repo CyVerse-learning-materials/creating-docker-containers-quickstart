@@ -51,7 +51,7 @@ Downloads, access, and services
      - You will need a Docker Hub account to complete this exercise
      - |Docker Hub|
    * - CyVerse account
-     - An account is not required unless you wish to complete exercises using a CyVerse virtual machine (Atmosphere)
+     - An account is not required but encouraged
      - |CyVerse User Portal|
    * - Atmosphere access
      - An account is not required unless you wish to complete exercises using a CyVerse virtual machine (Atmosphere)
@@ -98,6 +98,11 @@ website.
   1. Launch and connect via ssh to the |Ubuntu 18_04 GUI XFCE Base v2.0| image (
      see |Atmosphere Manual| for help launching and connecting)
 
+    .. tip::
+
+       If you are using Atmosphere, your `sudo` password is the same as your
+       login credentials.
+
   2. Next, we need to install some dependancies to get Docker to run on our Ubuntu
      machine
 
@@ -135,18 +140,10 @@ website.
 
       sudo apt-get install -y docker-ce
 
-    .. tip::
-
-       If you are using Atmosphere, your `sudo` password is the same as your
-       login credentials.
-
 ----
 
 Additional information, help
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-..
-    Short description and links to any reading materials
 
 Search for an answer:
 |CyVerse Learning Center| or
