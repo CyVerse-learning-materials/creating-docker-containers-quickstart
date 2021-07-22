@@ -101,7 +101,7 @@ configuration saved.
        the Ubuntu machine we have used above.
      - **RUN**: Runs a command as you would at the shell. This creates a Docker
        layer in the image (See |Dockerfile| instructions for more on this).
-     - **LABLE**: Allows you to add metadata to your image in a "key=value" format.
+     - **LABEL**: Allows you to add metadata to your image in a "key=value" format.
      - **EXPOSE**: Indicates specific ports to be listened to.
      - **ENV**: Allows you to set environment variables.
      - **ADD**: Allows you to copy files into the container when it is built
